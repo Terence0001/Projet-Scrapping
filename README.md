@@ -1,3 +1,5 @@
+Ceci est un clonage du Github de notre groupe, Composé de Mister Fredy (Propriétaire de ce Répertoire), Laurent et Idriss
+
 # django_scrap
 
 ## Installation
