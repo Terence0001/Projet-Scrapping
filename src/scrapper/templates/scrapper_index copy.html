@@ -1,0 +1,166 @@
+{% extends 'baser.html' %}
+{% block content %}
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="card text-center" style="width: 30rem;">
+            <div class="card-header">
+                <h5 class="card-title">Nom_projet</h5>
+            </div>
+            <div class="card-body">
+                <div id="btn-cont" class="d-flex flex-column align-items-center justify-content-center">
+                    {% if isScrapping == "False" %}
+                        <a id="scrapp" href="#" class="btn btn-primary">Nouveau relevé</a>
+                        <input id="interrupt" type="hidden"></input>
+                        {% else %}
+                        <a id="interrupt" href="#" class="btn btn-danger">Interompre le scrapp</a>
+                        <input id="scrapp" type="hidden"></input>
+                        <div id="spinner" class="spinner-grow my-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    {% endif %}
+                    <input id="spinner" type="hidden"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addScrappBtn() {
+
+
+            // Ajouter bouton scrapp
+            const scrapp_btn = document.createElement("a");
+            const node = document.createTextNode("Nouveau relevé");
+            scrapp_btn.appendChild(node);
+            scrapp_btn.setAttribute("id", "scrapp")
+            scrapp_btn.classList.add("btn")
+            scrapp_btn.classList.add("btn-primary")
+            scrapp_btn.href = "#"
+        
+            const btn_cont = document.getElementById('btn-cont');
+            btn_cont.appendChild(scrapp_btn)
+
+            scrapp_btn.addEventListener("click", event => {
+                fetch('http://127.0.0.1:8000/scrapping/scrapp/interupt', {
+                    method: 'GET', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin'
+                })
+                .then((response) => {
+                    addDeleteBtn()
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            })
+        }
+
+        function addDeleteBtn() {
+            const input = document.getElementById('interrupt');
+            input.remove();
+            const spin = document.getElementById('spinner');
+            spin.remove();
+
+            // Ajouter bouton arrêter
+            const delete_btn = document.createElement("a");
+            const node = document.createTextNode("Interompre le scrapp");
+            delete_btn.appendChild(node);
+            delete_btn.setAttribute("id", "interrupt")
+            delete_btn.classList.add("btn")
+            delete_btn.classList.add("btn-danger")
+            delete_btn.href = "#"
+        
+            const btn_cont = document.getElementById('btn-cont');
+            btn_cont.appendChild(delete_btn)
+
+            // Spinner
+            const spinner = document.createElement("div");
+            spinner.setAttribute("id", "scrapp")
+            spinner.classList.add("spinner-grow")
+            spinner.classList.add("my-2")
+            spinner.setAttribute("role", "status")
+
+            const spinner_span = document.createElement("span");
+            spinner_span.classList.add("visually-hidden")
+            const span_node = document.createTextNode("Nouveau relevé");
+            spinner_span.appendChild(span_node);
+
+            delete_btn.addEventListener("click", event => {
+                fetch('http://127.0.0.1:8000/scrapping/scrapp/interupt', {
+                    method: 'GET', // or 'PUT'
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin'
+                })
+                .then((response) => {
+                    addScrappBtn()
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+            })
+        
+            // Retirer le bouton demarrer
+            const scrapp_btn = document.getElementById('scrapp');
+            scrapp_btn.remove();
+        }
+
+        document.querySelector("#scrapp").addEventListener("click", event => {
+            addDeleteBtn()
+
+            fetch('http://127.0.0.1:8000/scrapping/scrapp/1', {
+                method: 'GET', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin'
+            })
+            .then((response) => {
+                // response.json()
+        
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        });
+
+        
+        document.querySelector("#interrupt").addEventListener("click", event => {
+            const input = document.getElementById('scrapp');
+            input.remove();
+            console.log("ok ici")
+            const spin = document.getElementById('spinner');
+            spin.remove();
+            console.log("ok ici")
+            
+            addScrappBtn()
+            
+            fetch('http://127.0.0.1:8000/scrapping/scrapp/1', {
+                method: 'GET', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin'
+            })
+            .then((response) => {
+                const spinner = document.createElement("div");
+                spinner.setAttribute("id", "scrapp")
+                spinner.classList.add("spinner-grow")
+                spinner.classList.add("my-2")
+                spinner.setAttribute("role", "status")
+
+                const spinner_span = document.createElement("span");
+                spinner_span.classList.add("visually-hidden")
+                const span_node = document.createTextNode("Nouveau relevé");
+                spinner_span.appendChild(span_node);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        })
+
+
+    </script>
+{% endblock content %}

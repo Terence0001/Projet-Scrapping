@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Page Historique</title>
+    <!--<script src="./js/script.js" defer></script>-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" defer> </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer> </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js" defer> </script>
+    <script type="module" src="{% static './js/table.mjs' %}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+
+  <body>
+    <h1> Page Historique </h1>
+
+    <div class="container mt-5">
+        <table id="example" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>État</th>
+                    <th>Nb Thread</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ind in data %}
+                <tr>
+                    <td>{{ ind.date_rel|date:"d M Y"}}</td> <!---->
+                    {% if ind.etat_rel %} <td> <i class="bi bi-check"></i> </td>
+                    {% else %}            <td> <i class="bi bi-exclamation-triangle"></i> </td>
+                    {% endif %}
+                    <td> 0 </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

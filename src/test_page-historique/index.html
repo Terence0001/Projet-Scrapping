@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ChartJSW3S</title>
+    <!--<script src="./js/script.js" defer></script>-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" defer> </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer> </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js" defer> </script>
+    <script type="module" src="./js/script.js" defer></script>
+    <script type="module" src="./js/file.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <h1> Page Historique </h1>
+
+    <div class="container mt-5">
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>État</th>
+                    <th>Nb Thread</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for x in emptytestobject %}
+                <tr>
+                    <td>{{ x.firstname }}</td>
+                    <td>{{ x.firstname }}</td>
+                    <td>{{ x.firstname }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

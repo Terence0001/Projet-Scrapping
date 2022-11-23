@@ -1,0 +1,101 @@
+{% extends 'baser.html' %}
+{% block content %}
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="card text-center" style="width: 30rem;">
+            <div class="card-header">
+                <h5 class="card-title">Nom_projet</h5>
+            </div>
+            <div class="card-body">
+                <div id="btn-cont" class="d-flex flex-column align-items-center justify-content-center">
+                    {% if isScrapping == "False" %}
+                        <input id="interrupt" type="hidden"></input>
+                        <a id="scrapp" href="{% url 'scrapper_scrapp' 1 %}" class="btn btn-primary">Nouveau relevé</a>
+                        {% else %}
+                        <input id="scrapp" type="hidden"></input>
+                        <a id="interrupt" href="#" class="btn btn-danger">Interompre le scrapp</a>
+                        <div id="spinner" class="spinner-grow my-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector("#scrapp").addEventListener("click", event => {
+            const btn_interupt = document.getElementById('interrupt');
+            btn_interupt.remove();
+            const input = document.getElementById('scrapp');
+            input.remove();
+
+            const reload_btn = document.createElement("button");
+            const node = document.createTextNode("Recharger la page");
+            reload_btn.appendChild(node);
+            reload_btn.setAttribute("id", "recharge")
+            reload_btn.classList.add("btn")
+            reload_btn.classList.add("btn-light")
+            reload_btn.href = "#"
+
+            const btn_cont = document.getElementById('btn-cont');
+            btn_cont.appendChild(reload_btn)
+
+            reload_btn.addEventListener("click", event => {
+                window.stop()
+                window.location.reload();
+            })
+
+            fetch('http://127.0.0.1:8000/scrapping/scrapp/1', {
+                method: 'GET', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin'
+            })
+            .then((response) => {
+
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        })
+
+        document.querySelector("#interrupt").addEventListener("click", event => {
+            const input = document.getElementById('scrapp');
+            input.remove();
+            const btn_interupt = document.getElementById('interrupt');
+            btn_interupt.remove();
+            const spin = document.getElementById('spinner');
+            spin.remove();
+
+            fetch('http://127.0.0.1:8000/scrapping/scrapp/interupt', {
+                method: 'GET', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin'
+            })
+            .then((response) => {
+                const reload_btn = document.createElement("button");
+                const node = document.createTextNode("Recharger la page");
+                reload_btn.appendChild(node);
+                reload_btn.setAttribute("id", "recharge")
+                reload_btn.classList.add("btn")
+                reload_btn.classList.add("btn-light")
+                reload_btn.href = "#"
+
+                const btn_cont = document.getElementById('btn-cont');
+                btn_cont.appendChild(reload_btn)
+
+                reload_btn.addEventListener("click", event => {
+                    window.location.reload();
+                })
+
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        })
+    </script>
+    
+{% endblock content %}

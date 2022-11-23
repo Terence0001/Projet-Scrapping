@@ -1,0 +1,18 @@
+#footer_nav_bar{
+    font-size: 1.5em;
+    color: white;
+}
+
+.text-center {
+    background-color: rgba(22.7, 22.7, 22.7, 24.4);
+}
+
+.navbar-custom{
+    height: 100px;
+    background-color: white/*rgba(22.7, 22.7, 22.7, 24.4);*/
+}
+
+.iconAndName{
+    display: flex;
+    justify-content: 'align';
+}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if request.session.message %}
+        <p>{{ request.session.message }}</p>
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <section>
+        <div class="container-md border w-25 rounded-4 text-center mx-auto mb-3 mt-3"
+        style="background-color:#D9D9D9">
+            <form method="post"><br>
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary rounded-5" style="background-color: rgb(88, 87, 87);" >S'identfier</button>
+            </form>
+        </div>
+    </section>
+{% endblock content %}

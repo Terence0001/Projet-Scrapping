@@ -1,0 +1,19 @@
+
+.env\Scripts\activate.bat
+cd src
+python manage.py runserver
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+python manage.py loaddata */fixtures/*.json
+- projet.json
+- releveHistorique.json
+- thread.json
+- commentaire.json
+
+python manage.py loaddata projet.json
+python manage.py loaddata releveHistorique.json
+python manage.py loaddata thread.json
+python manage.py loaddata commentaire.json

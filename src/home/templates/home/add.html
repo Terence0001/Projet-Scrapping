@@ -1,0 +1,15 @@
+{% extends 'home/Home.html' %}
+
+{% block mymessage %}
+<h2>Add project</h2>
+<form action="addrecord/" method="post">
+{% csrf_token %}
+Name:<br>
+<input name="first">
+<br><br>
+Status:<br>
+<input name="last">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

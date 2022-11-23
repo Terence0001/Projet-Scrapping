@@ -1,0 +1,57 @@
+<DOCTYPE>
+<html>
+    <head>
+        {% load static %}
+        <title>HOME</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link  href="{% static 'Home.css' %}" rel="stylesheet">
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg bg-light p-3 mb-2 bg-dark text-white d-flex justify-content-between">
+                    <a class="nav-link active text-white" aria-current="page" href="https://www.o2.co.uk/"  target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door me-5" viewBox="0 0 16 16">
+                        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+                        </svg>
+                    </a>
+                    <h2 class="text-center">Telefonica</h2>
+                <a type="button" class="btn btn-light" href="{% url 'login' %}">Log in</a>
+        </nav>
+    </body>
+    {% block mymessage %}
+    
+    <table class="table">
+            <thead class="table-dark">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Projet</th>
+                  <th scope="col">Date relevé</th>
+                  <th scope="col">Etat relevé</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+              </tbody>
+            {% for x in mymembers %}
+            <tr>
+                <td><a href="update/{{ x.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Color-black" class="bi bi-activity" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"/>
+                        </svg></a></td> {% comment %} Boutton Modifier {% endcomment %}
+                <td>{{ x.firstname }}</td>
+                <td>{{ x.lastname }}</td>
+                <td><a href="delete/{{ x.id }}">{% comment %} Boutton Delete {% endcomment %}<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="Color-black" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                    <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+                        </svg></a>
+            </tr>
+            {% endfor %}
+    </table>
+            <p>{% comment %} Boutton d'ajout {% endcomment %}
+            <a id="Add_" href="add/"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="Color-black" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg></a>
+            </p>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
+    <Footer>
+    </footer> 
+</html>
+{% endblock %}

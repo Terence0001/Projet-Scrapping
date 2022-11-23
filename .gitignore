@@ -1,0 +1,15 @@
+.env 
+
+src/db.sqlite3
+
+.idea
+.vscode
+*.sqlite3
+*.pyc
+src/db.sqlite3
+src/django_scrap/__pycache__/*
+
+src/dashboard/__pycache__/*
+
+src/grahpic/__pycache__
+

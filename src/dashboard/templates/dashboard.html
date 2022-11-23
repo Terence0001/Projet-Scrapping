@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", shrink-to-fit=no>
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/dashboard/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/dashboard/css/dashboard.css' %}"/>
+</head>
+
+  <nav class="navbar navbar-expand-lg bg-dark rounded-bottom box-shadow">
+    <div class="container-fluid">
+
+        <a class="navbar-brand text-center" style="color: rgb(248, 248, 248)" href="#">
+            <img src="{% static '/dashboard/img/file-text.svg' %}" alt="Logo" width="60" height="62" class="d-inline-block align-text-center" style="color:aliceblue">
+        </a>
+
+        <a class="text-center" style="color: rgb(248, 248, 248)" href="#">
+            <img src="{% static '/dashboard/img/Telefonica.png' %}" alt="Logo" width="300" height="100" class="d-inline-block align-text-center" style="color:aliceblue">
+        </a>
+
+        <a href="">
+        <button type="button" class="btn btn-secondary rounded-5" style="background-color: rgb(88, 87, 87);">Déconnexion</button>
+        </a>
+    </div>
+  </nav>
+
+  <body>
+    <section>
+    <div class="container-md text-center row justify-content-center mx-auto">
+
+      <h3 class="align-text-center mt-3" style="color: #000;">
+        Projet en cours
+      </h3>
+    </section>
+
+    <section>
+        <div class="container-md text-center row justify-content-center mx-auto">
+            <table 
+                class="table table-hover rounded-4 box-shadow--6dp w-50 mt-1 dataTables_paginate paging_simple_numbers" 
+                style="background-color:#D9D9D9">
+        
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Projet</th>
+                        <th scope="col">Date dernier rel</th> 
+                        <th scope="col">Nb rel</th>
+                        <th scope="col">Modifier</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                {% for x in projetEnCours %}
+                    <tr>
+                        <td><a href="{% url 'project_index' projet_id=x.projet_id%}">{{ x.projet_id }}</a></td>
+                        <td>{{ x.latest_date }}</td>
+                        <td>{{ x.total }}</td>
+                        <td><a class="text-center mx-auto" href="update/{{ x.projet_id }}">
+                            <img src="{% static '/dashboard/img/edit.svg' %}" alt="Logo" width="24" height="24" class="d-inline-block align-text-center">
+                        </a></td>
+                        <td><a onclick="checker()" class="text-center mx-auto" href="delete/{{ x.projet_id }}">
+                            <img src="{% static '/dashboard/img/x-circle.svg' %}" alt="Logo" width="24" height="24" class="d-inline-block align-text-center">
+                        </a></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+
+        <div class="container-md text-center row justify-content-center mt-2 mx-auto">
+            <a href="add/">
+                <button type="button" class="btn btn-secondary rounded-5" style="background-color:#000000">
+                    <img src="{% static '/dashboard/img/plus-circle.svg' %}" alt="Logo" width="24" height="24" class="d-inline-block align-text-center">
+                    Ajouter un projet
+                </button>
+            </a>
+        </div>
+
+    </section>
+
+    <script type="text/javascript" src="{% static '/dashboard/js/dashboard.js' %}"></script>
+    <script>
+    function checker() {
+        let result = confirm('Êtes-vous sûr de vouloir supprimer ce projet? Si vous supprimez cela va engendrer une erreur par la suite et le dashboard ne sera plus accessible!!!');
+        if (result == false) {
+            event.preventDefault();
+        }
+    }
+    </script>
+    
+
+  </body>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center rounded-top mt-4 fixed-bottom" style="color: rgb(248, 248, 248)">
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        2022 © Team Trèfle
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+</html>

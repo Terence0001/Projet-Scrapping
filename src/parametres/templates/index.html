@@ -1,0 +1,20 @@
+
+{% block content %}
+
+    {% if form.errors %}
+    <p>There was an error with your password</p>
+        <br>
+        {{ message }}
+    {% endif %}
+
+    {% if request.session.message %}
+        <p>{{ request.session.message }}</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'logout' %}">Deconnection</a></p>
+    {% else %}
+        <p>You don't have access to this page. To proceed, please login with an account that has access.</p>
+    {% endif %}
+
+{% endblock %}

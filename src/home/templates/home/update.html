@@ -1,0 +1,16 @@
+{% extends 'home/Home.html' %}
+
+{% block mymessage %}
+<h2>Update project</h2>
+
+<form action="updaterecord/{{ mymember.id }}" method="post">
+{% csrf_token %}
+Name:<br>
+<input name="first" value="{{ mymember.firstname }}">
+<br><br>
+Status:<br>
+<input name="last" value="{{ mymember.lastname }}">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,0 +1,74 @@
+[
+    {
+        "pk": 1,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 1,
+            "titre": "Titre Thread 1",
+            "auteur": "Jean Pierre 1"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 2,
+            "titre": "Titre Thread 2",
+            "auteur": "Jean Pierre 2"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 3,
+            "titre": "Titre Thread 3",
+            "auteur": "Jean Pierre 3"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 4,
+            "titre": "Titre Thread 4",
+            "auteur": "Jean Pierre 4"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 5,
+            "titre": "Titre Thread 5",
+            "auteur": "Jean Pierre 5"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 8,
+            "titre": "Titre Thread 6",
+            "auteur": "Jean Pierre 6"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 3,
+            "titre": "Titre Thread 7",
+            "auteur": "Jean Pierre 7"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "parametres.thread",
+        "fields": {
+            "rel_historique": 2,
+            "titre": "Titre Thread 8",
+            "auteur": "Jean Pierre 8"
+        }
+    }
+]

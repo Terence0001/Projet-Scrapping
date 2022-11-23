@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", shrink-to-fit=no>
+    <title>Project</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/project/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/project/css/project.css' %}"/>
+    
+</head>
+
+
+  <nav class="navbar navbar-expand-lg bg-dark rounded-bottom">
+    <div class="container-fluid">
+      
+      <a class="navbar-brand text-center" style="color: rgb(248, 248, 248)" href="#">
+        <img src="{% static '/project/img/pie-chart.svg' %}" alt="Logo" width="60" height="62" class="d-inline-block align-text-center" style="color:aliceblue">
+      </a>
+
+      <a class="text-center" style="color: rgb(248, 248, 248)" href="http://127.0.0.1:8000/dashboard">
+        <img src="{% static '/project/img/Telefonica.png' %}" alt="Logo" width="300" height="100" class="d-inline-block align-text-center" style="color:aliceblue">
+      </a>
+
+      <a href="">
+        <button type="button" class="btn btn-secondary rounded-5" style="background-color: rgb(88, 87, 87);">Déconnexion</button>
+      </a>
+    </div>
+  </nav>
+
+  <body>
+    <section>
+    <div class="container-md text-center justify-content-center mx-auto">
+
+      <h3 class="align-text-center mt-3" style="color: #000;">
+       Projet {{ nom_projet }}
+      </h3>
+    </section>
+
+    <section>
+        <div class="container-fluid text-center mx-auto mt-5">
+
+            <button type="button" id="historique" class="btn btn-outline-secondary box-shadow--4dp vertical-align" 
+            style="--bs-btn-padding-y: 5rem; --bs-btn-padding-x: 5rem; --bs-btn-font-size: 2rem;">
+            
+                <span>
+                    <img src="{% static '/project/img/file-text.svg' %}" alt="Logo" width="60" height="60" class="d-inline-block align-text-center bi-align-bottom">
+                    <br>Historique
+                </span>
+            </a>
+
+            </button>
+            <button type="button" class="btn btn-outline-secondary box-shadow--4dp"
+            style="--bs-btn-padding-y: 5rem; --bs-btn-padding-x: 4.9rem; --bs-btn-font-size: 2rem;">
+                <span>
+                    <img src="{% static '/project/img/bar-chart.svg' %}" alt="Logo" width="60" height="60" class="d-inline-block align-text-center bi-align-bottom">
+                    <br>Graphique
+                </span>
+
+            </button>
+            <button type="button" class="btn btn-outline-secondary box-shadow--4dp"
+            style="--bs-btn-padding-y: 5rem; --bs-btn-padding-x: 5rem; --bs-btn-font-size: 2rem;">
+                <span>
+                    <img src="{% static '/project/img/aperture.svg' %}" alt="Logo" width="60" height="60" class="d-inline-block align-text-center bi-align-bottom">
+                    <br>Scrapping
+                </span>
+
+            </button>
+            <button disabled type="button" class="btn btn-outline-secondary box-shadow--4dp"
+            style="--bs-btn-padding-y: 5rem; --bs-btn-padding-x: 3.5rem; --bs-btn-font-size: 2rem;">
+                <span>
+                    <img src="{% static '/project/img/book.svg' %}" alt="Logo" width="60" height="60" class="d-inline-block align-text-center bi-align-bottom">
+                    <br>Dernier relevé
+                </span>
+            </button>
+        </div>
+
+
+  </section>
+    
+  </body>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center rounded-top fixed-bottom" style="color: rgb(248, 248, 248)">
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        2022 © Team Trèfle
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <script type="text/javascript" src="{% static '/project/js/project.js' %}"></script>

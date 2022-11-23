@@ -1,0 +1,23 @@
+src
+
+o testProject
+------settings.py
+------urls.py
+
+o graphic
+------ admin.py
+------ apps.py
+------ models.py
+------ tests.py
+------ urls.py
+------ views.py
+
++++static
+------ css
+--------------style.css
+------ js
+--------------script.js
++++templates
+------ graphic
+--------------index.html
+
